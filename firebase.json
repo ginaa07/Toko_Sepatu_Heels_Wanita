@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"backendgolang","appId":"1:295599090816:android:3e66223914f67204cb8a65","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"backendgolang","configurations":{"android":"1:295599090816:android:3e66223914f67204cb8a65","web":"1:295599090816:web:35d8f00317555b98cb8a65"}}}}}}
