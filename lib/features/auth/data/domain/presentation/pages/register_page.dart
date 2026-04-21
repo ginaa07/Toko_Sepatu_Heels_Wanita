@@ -120,3 +120,30 @@ class _RegisterPageState extends State<RegisterPage> {
                         ? 'Password tidak cocok' : null, 
                   ), 
                   const SizedBox(height: 28),
+
+                  // Widget reusable: CustomButton 
+                  CustomButton( 
+                    label: 'Daftar Sekarang', 
+                    onPressed: _register, 
+                    isLoading: isLoading, 
+                    ), 
+const SizedBox(height: 16), 
+// Link ke Login 
+Row(mainAxisAlignment: MainAxisAlignment.center, children: [ 
+const Text('Sudah punya akun? '), 
+GestureDetector( 
+onTap: () => Navigator.pushReplacementNamed(context, 
+AppRouter.login), 
+child: const Text('Masuk', 
+style: TextStyle(color: Color(0xFF1565C0), fontWeight: 
+FontWeight.bold)), 
+), 
+]), 
+], 
+), 
+), 
+), 
+), 
+), 
+); 
+} 
