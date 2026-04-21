@@ -29,3 +29,18 @@ class UserModel {
         createdAt: json['created_at'] as String, 
       ); 
 }
+
+class AuthResponseModel { 
+  final bool success; 
+  final String message; 
+  final String accessToken; 
+  final String tokenType; 
+  final int expiresIn; 
+  final UserModel user; 
+ 
+  const AuthResponseModel({ 
+    required this.success, 
+    required this.message, 
+    required this.accessToken, 
+    required this.tokenType, 
+    required this.expiresIn,
