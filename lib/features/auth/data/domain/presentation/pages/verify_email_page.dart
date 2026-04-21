@@ -54,3 +54,38 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
       const SnackBar(content: Text('Email verifikasi sudah dikirim ulang')), 
     ); 
   } 
+
+   
+  @override 
+  Widget build(BuildContext context) { 
+    final user = context.watch<AuthProvider>().firebaseUser; 
+ 
+    return Scaffold( 
+      body: SafeArea( 
+        child: Padding( 
+          padding: const EdgeInsets.all(24), 
+          child: Column( 
+            mainAxisAlignment: MainAxisAlignment.center, 
+            children: [ 
+              // Widget reusable: AuthHeader 
+              const AuthHeader( 
+                icon:      Icons.mark_email_unread_outlined, 
+                title:     'Verifikasi Email Kamu', 
+                subtitle:  'Kami sudah mengirim link verifikasi ke email di bawah ini.', 
+                iconColor: Colors.orange, 
+              ), 
+              const SizedBox(height: 24), 
+ 
+              // Tampilkan email user 
+              Container( 
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12), 
+                decoration: BoxDecoration( 
+                  color: Colors.grey.shade100, 
+                  borderRadius: BorderRadius.circular(12), 
+                  border: Border.all(color: Colors.grey.shade300), 
+                ), 
+                child: Text( 
+                  user?.email ?? '-', 
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600), 
+                ), 
+              ), 
