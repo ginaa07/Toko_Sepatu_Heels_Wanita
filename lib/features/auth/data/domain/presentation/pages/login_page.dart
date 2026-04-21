@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose(); 
   } 
  
-  /// Handler untuk login email/password 
+ 
   Future<void> _loginEmail() async { 
     if (!_formKey.currentState!.validate()) return; 
  
@@ -36,15 +36,14 @@ class _LoginPageState extends State<LoginPage> {
     _handleLoginResult(ok, auth); 
   } 
  
-  /// Handler untuk login Google 
+ 
   Future<void> _loginGoogle() async { 
     final auth = context.read<AuthProvider>(); 
     final ok = await auth.loginWithGoogle(); 
     if (!mounted) return; 
     _handleLoginResult(ok, auth); 
   } 
- 
-  /// Routing berdasarkan hasil login 
+  
   void _handleLoginResult(bool ok, AuthProvider auth) { 
     if (ok) { 
       Navigator.pushReplacementNamed(context, AppRouter.dashboard); 
@@ -59,3 +58,34 @@ class _LoginPageState extends State<LoginPage> {
       );
     }
   }
+
+   void _showForgotPasswordDialog(BuildContext context) { 
+    final ctrl = TextEditingController(); 
+    showDialog( 
+      context: context, 
+      builder: (_) => AlertDialog( 
+        title: const Text('Reset Password'), 
+        content: CustomTextField( 
+          label: 'Email', 
+          hint: 'Email terdaftar', 
+          controller: ctrl, 
+          keyboardType: TextInputType.emailAddress, 
+        ), 
+        actions: [ 
+          TextButton( 
+            onPressed: () => Navigator.pop(context), 
+            child: const Text('Batal'), 
+          ), 
+          ElevatedButton( 
+            onPressed: () async { 
+              await FirebaseAuth.instance.sendPasswordResetEmail( 
+                email: ctrl.text.trim(), 
+              ); 
+              if (context.mounted) Navigator.pop(context); 
+            }, 
+            child: const Text('Kirim'), 
+          ), 
+        ], 
+      ), 
+    ); 
+  } 
