@@ -113,5 +113,19 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                 onPressed: _resendCooldown ? null : _resendEmail, 
               ), 
               const SizedBox(height: 16), 
- 
+            CustomButton( 
+label: 'Ganti Akun / Logout', 
+variant: ButtonVariant.text, 
+onPressed: () { 
+context.read<AuthProvider>().logout(); 
+Navigator.pushReplacementNamed(context, AppRouter.login); 
+}, 
+), 
+], 
+), 
+), 
+), 
+); 
+} 
+}
            
