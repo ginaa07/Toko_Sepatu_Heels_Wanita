@@ -7,7 +7,7 @@ import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/widgets/custom_button.dart';
 
 
-
+  class VerifyEmailPage extends StatefulWidget {
   const VerifyEmailPage({super.key}); 
   @override 
   State<VerifyEmailPage> createState() => _VerifyEmailPageState(); 
