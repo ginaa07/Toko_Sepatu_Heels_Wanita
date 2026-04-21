@@ -126,3 +126,14 @@ class _LoginPageState extends State<LoginPage> {
                       return null; 
                     }, 
                   ),
+                   const SizedBox(height: 16), 
+                  CustomTextField( 
+                    label: 'Password', 
+                    hint: 'Masukkan password', 
+                    controller: _passCtrl, 
+                    obscureText: !_showPass, 
+                    prefixIcon: const Icon(Icons.lock_outline), 
+                    suffixIcon: IconButton( 
+                      icon: Icon( 
+                        _showPass ? Icons.visibility_off : Icons.visibility, 
+                      ), 
