@@ -19,3 +19,25 @@ class AppStrings {
   static const String logoutSuccess = 'Logout berhasil';
   static const String emailVerificationSent = 'Email verifikasi sudah dikirim';
   static const String emailVerificationResent = 'Email verifikasi sudah dikirim ulang';
+
+  // Hints
+  static const String emailHint = 'contoh@email.com';
+  static const String passwordHint = 'Minimal 8 karakter';
+  static const String nameHint = 'Masukkan nama lengkap';
+
+  // Errors
+  static const String fieldRequired = 'Wajib diisi';
+  static const String emailInvalid = 'Format email tidak valid';
+  static const String passwordTooShort = 'Password minimal 8 karakter';
+  static const String passwordMismatch = 'Password tidak cocok';
+  static const String loginFailed = 'Login gagal';
+  static const String registerFailed = 'Pendaftaran gagal';
+  static const String networkError = 'Tidak ada koneksi internet';
+
+  // Dashboard
+  static const String dashboard = 'Dashboard';
+  static const String products = 'Produk';
+  static const String loading = 'Memuat...';
+  static const String retry = 'Coba Lagi';
+  static const String or = 'atau';
+}
