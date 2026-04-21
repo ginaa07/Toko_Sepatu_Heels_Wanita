@@ -1,3 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:toko_sepatu_heels_wanita/core/constants/api_constants.dart';
+import 'package:toko_sepatu_heels_wanita/core/services/dio_client.dart';
 
 
 enum AuthStatus { 
@@ -33,17 +38,14 @@ Future<bool> register({name, email, password}) async {
   
   // STEP 1: Buat akun di Firebase 
   final credential = await _auth.createUserWithEmailAndPassword( 
-    email: email, password: password, 
+    email: email, 
+    password: password, 
   ); 
   _firebaseUser = credential.user; 
   
-  // STEP 2: Simpan nama di profil Firebase 
   await _firebaseUser?.updateDisplayName(name); 
   
-  // STEP 3: Firebase kirim email verifikasi 
   await _firebaseUser?.sendEmailVerification(); 
-  
-  // STEP 4: Simpan sementara untuk re-login nanti 
   _tempEmail = email; 
   _tempPassword = password; 
   
@@ -164,4 +166,29 @@ Future<bool> _verifyTokenToBackend() async {
     notifyListeners(); 
   } 
  
+ // ─── Private Helpers ────────────────────────────────────── 
+void _setLoading() { 
+_status = AuthStatus.loading; 
+_errorMessage = null; 
+notifyListeners(); 
+} 
+void _setError(String message) { 
+_status = AuthStatus.error; 
+_errorMessage = message; 
+notifyListeners(); 
+} 
+String _mapFirebaseError(String code) => switch (code) { 
+'email-already-in-use'  => 'Email sudah terdaftar. Gunakan email lain.', 
+'user-not-found'        
+=> 'Akun tidak ditemukan. Silakan daftar.', 
+'wrong-password'        
+=> 'Password salah. Coba lagi.', 
+'invalid-email'        
+=> 'Format email tidak valid.', 
+'weak-password'        
+=> 'Password terlalu lemah. Minimal 6 karakter.', 
+'network-request-failed'=> 'Tidak ada koneksi internet.', 
+_                      
+=> 'Terjadi kesalahan. Coba lagi.', 
+}; 
 } 
