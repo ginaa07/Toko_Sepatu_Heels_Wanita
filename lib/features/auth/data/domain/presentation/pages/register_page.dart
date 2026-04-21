@@ -45,3 +45,38 @@ class _RegisterPageState extends State<RegisterPage> {
     } 
   } 
 }
+
+  @override 
+  Widget build(BuildContext context) { 
+    final isLoading = context.watch<AuthProvider>().isLoading; 
+ 
+    return LoadingOverlay( 
+      isLoading: isLoading, 
+      message: 'Mendaftarkan akun...', 
+      child: Scaffold( 
+        body: SafeArea( 
+          child: SingleChildScrollView(
+             padding: const EdgeInsets.all(24), 
+            child: Form( 
+              key: _formKey, 
+              child: Column( 
+                children: [ 
+                  const SizedBox(height: 32), 
+ 
+                  // Widget reusable: AuthHeader 
+                  const AuthHeader( 
+                    icon: Icons.person_add_alt_1, 
+                    title: 'Buat Akun Baru', 
+                    subtitle: 'Lengkapi data diri Anda untuk mendaftar', 
+                  ), 
+                  const SizedBox(height: 32), 
+ 
+                  // Widget reusable: CustomTextField 
+                  CustomTextField( 
+                    label: 'Nama Lengkap', 
+                    hint: 'Masukkan nama lengkap', 
+                    controller: _nameCtrl, 
+                    prefixIcon: const Icon(Icons.person_outline), 
+                    validator: (v) => (v?.isEmpty ?? true) ? 'Nama wajib diisi' : null, 
+                  ), 
+                  const SizedBox(height: 16), 
