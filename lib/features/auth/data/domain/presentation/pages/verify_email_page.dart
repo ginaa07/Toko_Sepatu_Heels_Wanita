@@ -89,3 +89,29 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600), 
                 ), 
               ), 
+
+               const SizedBox(height: 32), 
+ 
+              // Indikator polling 
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [ 
+                const SizedBox( 
+                  width: 16, height: 16, 
+                  child: CircularProgressIndicator(strokeWidth: 2), 
+                ), 
+                const SizedBox(width: 12), 
+                Text('Menunggu konfirmasi...', 
+                  style: TextStyle(color: Colors.grey.shade600)), 
+              ]), 
+              const SizedBox(height: 32), 
+ 
+              // Tombol kirim ulang dengan cooldown 
+              CustomButton( 
+                label: _resendCooldown 
+                    ? 'Kirim Ulang ($_countdown detik)' 
+                    : 'Kirim Ulang Email', 
+                variant: ButtonVariant.outlined, 
+                onPressed: _resendCooldown ? null : _resendEmail, 
+              ), 
+              const SizedBox(height: 16), 
+ 
+           
