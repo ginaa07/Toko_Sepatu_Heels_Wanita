@@ -137,3 +137,16 @@ class _LoginPageState extends State<LoginPage> {
                       icon: Icon( 
                         _showPass ? Icons.visibility_off : Icons.visibility, 
                       ), 
+                       onPressed: () => 
+                          setState(() => _showPass = !_showPass), 
+                    ), 
+                    validator: (v) => 
+                        (v?.isEmpty ?? true) ? 'Password wajib diisi' : null, 
+                  ), 
+                  const SizedBox(height: 8), 
+                  Align( 
+                    alignment: Alignment.centerRight, 
+                    child: TextButton( 
+                      onPressed: () => _showForgotPasswordDialog(context), 
+                      child: const Text('Lupa Password?'), 
+                    
