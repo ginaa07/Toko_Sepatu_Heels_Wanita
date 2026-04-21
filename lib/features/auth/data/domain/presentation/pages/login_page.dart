@@ -89,3 +89,40 @@ class _LoginPageState extends State<LoginPage> {
       ), 
     ); 
   } 
+
+   @override 
+  Widget build(BuildContext context) { 
+    final isLoading = context.watch<AuthProvider>().isLoading; 
+ 
+    return LoadingOverlay( 
+      isLoading: isLoading, 
+      message: 'Masuk ke akun...', 
+      child: Scaffold( 
+        body: SafeArea( 
+          child: SingleChildScrollView( 
+            padding: const EdgeInsets.all(24), 
+            child: Form( 
+              key: _formKey, 
+              child: Column( 
+                children: [ 
+                  const SizedBox(height: 32), 
+                  const AuthHeader( 
+                    icon: Icons.lock_open_outlined, 
+                    title: 'Selamat Datang', 
+                    subtitle: 'Masuk ke akun Anda untuk melanjutkan', 
+                  ), 
+                  const SizedBox(height: 32), 
+                  CustomTextField( 
+                    label: 'Email', 
+                    hint: 'contoh@email.com', 
+                    controller: _emailCtrl, 
+                    keyboardType: TextInputType.emailAddress, 
+                    prefixIcon: const Icon(Icons.email_outlined), 
+                    validator: (v) { 
+                      if (v?.isEmpty ?? true) return 'Email wajib diisi'; 
+                      if (!EmailValidator.validate(v!)) { 
+                        return 'Format email salah'; 
+                      } 
+                      return null; 
+                    }, 
+                  ),
