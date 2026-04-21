@@ -23,3 +23,25 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon, 
     this.enabled = true, 
   }); 
+
+  @override 
+  Widget build(BuildContext context) { 
+    return Column( 
+      crossAxisAlignment: CrossAxisAlignment.start, 
+      children: [ 
+        Text(label, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14)), 
+        const SizedBox(height: 6), 
+        TextFormField( 
+          controller: controller, 
+          obscureText: obscureText, 
+          validator: validator, 
+          keyboardType: keyboardType, 
+          enabled: enabled, 
+          decoration: InputDecoration( 
+            hintText: hint, 
+            prefixIcon: prefixIcon, 
+            suffixIcon: suffixIcon, 
+            filled: true, 
+            fillColor: Colors.grey.shade50, 
+            border: OutlineInputBorder( 
+              borderRadius: BorderRadius.circular(12),
