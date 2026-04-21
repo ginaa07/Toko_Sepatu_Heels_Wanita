@@ -1,4 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_sepatu_heels_wanita/core/routes/app_router.dart';
+import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/providers/auth_provider.dart';
+import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/widgets/auth_header.dart';
+import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/widgets/custom_button.dart';
+import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/widgets/custom_text_field.dart';
+import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/widgets/divider_with_text.dart';
+import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/widgets/google_sign_in_button.dart';
+import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/widgets/loading_overlay.dart';
+
 
 
 
@@ -149,4 +161,47 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextButton( 
                       onPressed: () => _showForgotPasswordDialog(context), 
                       child: const Text('Lupa Password?'), 
-                    
+                     ), 
+                  ), 
+                  const SizedBox(height: 8), 
+                  CustomButton( 
+                    label: 'Masuk', 
+                    onPressed: _loginEmail, 
+                    isLoading: isLoading, 
+                  ), 
+                  const SizedBox(height: 20), 
+                  const DividerWithText(text: 'atau masuk dengan'), 
+                  const SizedBox(height: 20), 
+                  GoogleSignInButton( 
+                    onPressed: _loginGoogle, 
+                    isLoading: isLoading, 
+                  ), 
+                  const SizedBox(height: 24), 
+                  Row( 
+                    mainAxisAlignment: MainAxisAlignment.center, 
+                    children: [ 
+                      const Text('Belum punya akun? '), 
+                      GestureDetector( 
+                        onTap: () => Navigator.pushReplacementNamed( 
+                          context, 
+                          AppRouter.register, 
+                        ), 
+                        child: const Text( 
+                          'Daftar', 
+                          style: TextStyle( 
+                            color: Color(0xFF1565C0), 
+                            fontWeight: FontWeight.bold, 
+                          ), 
+                        ), 
+                      ), 
+                    ], 
+                  ), 
+                ], 
+              ), 
+            ), 
+          ), 
+        ), 
+      ), 
+    ); 
+  } 
+} 
