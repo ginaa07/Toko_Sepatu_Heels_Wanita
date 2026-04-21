@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toko_sepatu_heels_wanita/core/constants/app_colors.dart';
 
 
 class AppTheme {
@@ -24,4 +25,26 @@ class AppTheme {
           backgroundColor: AppColors.primary, 
           foregroundColor: Colors.white, 
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          elevation: 2, 
+        ), 
+      ), 
+      inputDecorationTheme: InputDecorationTheme( 
+        filled: true, 
+        fillColor: Colors.grey.shade50, 
+        border: OutlineInputBorder( 
+          borderRadius: BorderRadius.circular(12), 
+          borderSide: BorderSide(color: Colors.grey.shade300), 
+        ), 
+        enabledBorder: OutlineInputBorder( 
+          borderRadius: BorderRadius.circular(12), 
+          borderSide: BorderSide(color: Colors.grey.shade300), 
+        ), 
+        focusedBorder: OutlineInputBorder( 
+          borderRadius: BorderRadius.circular(12), 
+          borderSide: const BorderSide(color: AppColors.primary, width: 2), 
+        ), 
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14), 
+      ), 
+    ); 
+  } 
 }
