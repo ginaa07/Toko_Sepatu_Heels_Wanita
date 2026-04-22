@@ -113,3 +113,35 @@ class _DashboardPageState extends State<DashboardPage> {
                           crossAxisAlignment: CrossAxisAlignment.start, 
                           children: [ 
                             Text(p.name, 
+                            style: const TextStyle(fontWeight: FontWeight.bold, 
+fontSize: 14), 
+                              maxLines: 2, overflow: TextOverflow.ellipsis), 
+                            const SizedBox(height: 4), 
+                            Text('Rp ${p.price.toStringAsFixed(0)}', 
+                              style: const TextStyle(color: Color(0xFF1565C0), 
+fontWeight: FontWeight.w600)), 
+                            const SizedBox(height: 4), 
+                            Container( 
+                              padding: const EdgeInsets.symmetric(horizontal: 8, 
+vertical: 2), 
+                              decoration: BoxDecoration( 
+                                color: Colors.blue.shade50, 
+                                borderRadius: BorderRadius.circular(20), 
+                              ), 
+                              child: Text(p.category, 
+                                style: const TextStyle(fontSize: 11, color: 
+Color(0xFF1565C0))), 
+                            ), 
+                          ], 
+                        ), 
+                      ), 
+                    ], 
+                  ), 
+                ); 
+              }, 
+            ), 
+          ), 
+      }, 
+    ); 
+  } 
+} 
