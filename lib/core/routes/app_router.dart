@@ -41,4 +41,24 @@ class AppRouter {
     verifyEmail: (_) => const VerifyEmailPage(), 
     dashboard:   (_) => const AuthGuard(child: DashboardPage()), 
   }; 
+
+   
+class AuthGuard extends StatelessWidget { 
+  final Widget child; 
+  const AuthGuard({super.key, required this.child}); 
+ 
+  @override 
+  Widget build(BuildContext context) { 
+    final status = context.watch<AuthProvider>().status; 
+ 
+    return switch (status) { 
+      AuthStatus.authenticated => child,            
+      AuthStatus.emailNotVerified => 
+        const VerifyEmailPage(),                    
+      _ => const LoginPage(),                     
+    }; 
+  } 
+} 
 }
+
+
