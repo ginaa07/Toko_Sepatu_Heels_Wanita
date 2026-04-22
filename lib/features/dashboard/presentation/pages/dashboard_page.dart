@@ -97,3 +97,13 @@ class _DashboardPageState extends State<DashboardPage> {
                     children: [ 
                       ClipRRect( 
                         borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+                        child: Image.network( 
+                          p.imageUrl, height: 120, width: double.infinity, 
+                          fit: BoxFit.cover, 
+                          errorBuilder: (_, __, ___) => Container( 
+                            height: 120, 
+                            color: Colors.grey.shade200, 
+                            child: const Icon(Icons.image_not_supported, size: 40), 
+                          ), 
+                        ), 
+                      ),
