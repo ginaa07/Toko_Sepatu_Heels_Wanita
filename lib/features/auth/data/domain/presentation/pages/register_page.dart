@@ -1,4 +1,7 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_sepatu_heels_wanita/core/routes/app_router.dart';
 import 'dart:ui';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/providers/auth_provider.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/widgets/auth_header.dart';
@@ -52,7 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
       );
     }
   }
-}
+
 
 @override
 Widget build(BuildContext context) {
@@ -167,4 +170,5 @@ Widget build(BuildContext context) {
       ),
     ),
   );
+}
 }
