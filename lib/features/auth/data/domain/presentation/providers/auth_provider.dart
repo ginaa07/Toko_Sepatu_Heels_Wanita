@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:toko_sepatu_heels_wanita/core/constants/api_constants.dart';
 import 'package:toko_sepatu_heels_wanita/core/services/dio_client.dart';
+import 'package:toko_sepatu_heels_wanita/core/services/secure_storage.dart';
 
 
 enum AuthStatus { 
@@ -16,13 +17,16 @@ enum AuthStatus {
 
 class AuthProvider extends ChangeNotifier { 
   final FirebaseAuth _auth = FirebaseAuth.instance; 
-  final GoogleSignIn _googleSignIn = GoogleSignIn(); 
+ final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
+);
  
   // ─── State ─────────────────────────────────────────────── 
   AuthStatus _status = AuthStatus.initial; 
   User?     _firebaseUser; 
   String?   _backendToken;   // Token dari backend (bukan Firebase token) 
   String?   _errorMessage; 
+  String? _tempEmail;
+  String? _tempPassword;
  
   // ─── Getters ───────────────────────────────────────────── 
   AuthStatus get status       => _status; 
