@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide AuthProvider;
 import 'package:provider/provider.dart';
 import 'package:toko_sepatu_heels_wanita/core/routes/app_router.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/providers/auth_provider.dart';
@@ -10,7 +10,6 @@ import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/widgets/divider_with_text.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/widgets/google_sign_in_button.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/widgets/loading_overlay.dart';
-
 
 
 
