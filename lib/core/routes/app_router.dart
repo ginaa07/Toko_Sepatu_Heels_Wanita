@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toko_sepatu_heels_wanita/core/services/secure_storage.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/pages/login_page.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/pages/register_page.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/pages/verify_email_page.dart';
@@ -81,6 +82,35 @@ class MyApp extends StatelessWidget {
       ), 
     ); 
   } 
+}
+
+ 
+// SplashPage: cek token tersimpan, redirect otomatis 
+class SplashPage extends StatefulWidget { 
+  const SplashPage({super.key}); 
+  @override State<SplashPage> createState() => _SplashPageState(); 
+} 
+ 
+class _SplashPageState extends State<SplashPage> { 
+  @override 
+  void initState() { 
+    super.initState(); 
+    _checkAuth(); 
+  } 
+ 
+  Future<void> _checkAuth() async { 
+    await Future.delayed(const Duration(seconds: 2));  
+    if (!mounted) return; 
+ 
+    final token = await SecureStorageService.getToken(); 
+    final route = token != null ? AppRouter.dashboard : AppRouter.login; 
+    Navigator.pushReplacementNamed(context, route); 
+  } 
+ 
+  @override 
+  Widget build(BuildContext context) => const Scaffold( 
+    body: Center(child: CircularProgressIndicator()), 
+  ); 
 }
 }
 
