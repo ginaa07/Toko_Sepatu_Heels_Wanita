@@ -23,12 +23,40 @@ class ProductProvider extends ChangeNotifier {
     try {
       final response = await DioClient.instance.get(ApiConstants.products);
 
-      // Backend response: { "data": [ {...}, {...} ] }
+      // 🔍 DEBUG RESPONSE
+      print("=== RESPONSE PRODUCTS ===");
+      print(response.data);
+      print("TYPE: ${response.data.runtimeType}");
+
+      // ✅ Validasi response
+      if (response.data == null) {
+        throw Exception("Response kosong");
+      }
+
+      if (response.data['data'] == null) {
+        throw Exception("Key 'data' tidak ditemukan di response");
+      }
+
       final List<dynamic> data = response.data['data'];
-      _products = data.map((e) => ProductModel.fromJson(e)).toList();
+
+      // ✅ Mapping ke model
+      _products = data.map((e) {
+        try {
+          return ProductModel.fromJson(e);
+        } catch (err) {
+          print("ERROR PARSE PRODUCT: $err");
+          throw Exception("Gagal parsing product");
+        }
+      }).toList();
+
+      print("JUMLAH PRODUK: ${_products.length}");
+
       _status = ProductStatus.loaded;
-    } on DioException catch (e) {
-      _error = e.response?.data['message'] ?? 'Gagal memuat produk';
+    } catch (e) {
+      print("=== ERROR FETCH PRODUCTS ===");
+      print(e);
+
+      _error = 'Gagal memuat produk';
       _status = ProductStatus.error;
     }
 

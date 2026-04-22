@@ -7,41 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:295599090816:android:d6bff274582574fccb8a65",
-        "android_client_info": {
-          "package_name": "backend.golang"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "295599090816-s0kkfknpgjpddn9vlug176f82qoq64u0.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAw2fr7HZI3bneIhNX1UdvSiUdXKhKbFxA"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "295599090816-s0kkfknpgjpddn9vlug176f82qoq64u0.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:295599090816:android:3e66223914f67204cb8a65",
         "android_client_info": {
           "package_name": "com.example.toko_sepatu_heels_wanita"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "295599090816-orkkndq5sl73j57bd8lkjr2oukkmda3a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.toko_sepatu_heels_wanita",
+            "certificate_hash": "f3d2850bb847a1e2c82f1e6c8090717230ef79ee"
+          }
+        },
         {
           "client_id": "295599090816-s0kkfknpgjpddn9vlug176f82qoq64u0.apps.googleusercontent.com",
           "client_type": 3
