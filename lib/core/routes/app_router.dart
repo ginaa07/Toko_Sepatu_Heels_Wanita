@@ -6,6 +6,7 @@ import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/pages/register_page.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/pages/verify_email_page.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/providers/auth_provider.dart';
+import 'package:toko_sepatu_heels_wanita/features/dashboard/presentation/providers/product_provider.dart';
 
 
 
