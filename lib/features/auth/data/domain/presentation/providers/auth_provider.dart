@@ -54,6 +54,21 @@ Future<bool> register({name, email, password}) async {
   return true; 
 }
 
+Future<bool> checkEmailVerified() async {
+  await _firebaseUser?.reload();
+  _firebaseUser = _auth.currentUser;
+
+  if (_firebaseUser?.emailVerified ?? false) {
+    return await _verifyTokenToBackend();
+  }
+
+  return false;
+}
+
+Future<void> resendVerificationEmail() async {
+  await _firebaseUser?.sendEmailVerification();
+}
+
 Future<bool> loginAfterEmailVerification() async { 
   _setLoading(); 
   
@@ -63,7 +78,7 @@ Future<bool> loginAfterEmailVerification() async {
   if (!(_firebaseUser?.emailVerified ?? false)) { 
     _status = AuthStatus.emailNotVerified; 
     return false; 
-  } 
+  }   
   
   final credential = await _auth.signInWithEmailAndPassword( 
     email: _tempEmail!, 

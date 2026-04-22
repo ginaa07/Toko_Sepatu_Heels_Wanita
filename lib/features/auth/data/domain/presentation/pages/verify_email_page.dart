@@ -75,7 +75,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Widget reusable: AuthHeader
+              
               const AuthHeader(
                 icon: Icons.mark_email_unread_outlined,
                 title: 'Verifikasi Email Kamu',
@@ -85,7 +85,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
               ),
               const SizedBox(height: 24),
 
-              // Tampilkan email user
+            
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
@@ -107,7 +107,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
 
               const SizedBox(height: 32),
 
-              // Indikator polling
+              
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -125,7 +125,6 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
               ),
               const SizedBox(height: 32),
 
-              // Tombol kirim ulang dengan cooldown
               CustomButton(
                 label: _resendCooldown
                     ? 'Kirim Ulang ($_countdown detik)'
