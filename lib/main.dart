@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:toko_sepatu_heels_wanita/core/routes/app_router.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/providers/auth_provider.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +10,6 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-
-  // Inisialisasi Firebase SEBELUM runApp
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -31,6 +30,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Toko Sepatu Heels Wanita',
+      initialRoute: AppRouter.splash,
+      routes: AppRouter.routes,
+    );
   }
 }
