@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toko_sepatu_heels_wanita/core/routes/app_router.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/providers/auth_provider.dart';
 import 'package:toko_sepatu_heels_wanita/features/dashboard/presentation/providers/product_provider.dart';
 
@@ -43,4 +44,18 @@ class _DashboardPageState extends State<DashboardPage> {
               if (!mounted) return; 
               Navigator.pushReplacementNamed(context, AppRouter.login); 
             }, 
+          ),
+           ], 
+      ), 
+ 
+      body: switch (product.status) { 
+        ProductStatus.loading || ProductStatus.initial => const Center( 
+            child: Column( 
+              mainAxisAlignment: MainAxisAlignment.center, 
+              children: [ 
+                CircularProgressIndicator(), 
+                SizedBox(height: 16), 
+                Text('Memuat produk...'), 
+              ], 
+            ), 
           ),
