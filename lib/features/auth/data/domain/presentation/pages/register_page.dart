@@ -41,7 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     if (!mounted) return;
     if (success) {
-      // Navigasi ke halaman instruksi verifikasi email
+      
       Navigator.pushReplacementNamed(context, AppRouter.verifyEmail);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -71,7 +71,6 @@ Widget build(BuildContext context) {
               children: [
                 const SizedBox(height: 32),
 
-                // Widget reusable: AuthHeader
                 const AuthHeader(
                   icon: Icons.person_add_alt_1,
                   title: 'Buat Akun Baru',
@@ -79,7 +78,7 @@ Widget build(BuildContext context) {
                 ),
                 const SizedBox(height: 32),
 
-                // Widget reusable: CustomTextField
+                
                 CustomTextField(
                   label: 'Nama Lengkap',
                   hint: 'Masukkan nama lengkap',
