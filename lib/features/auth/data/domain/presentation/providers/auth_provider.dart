@@ -7,40 +7,38 @@ import 'package:toko_sepatu_heels_wanita/core/services/secure_storage.dart';
 
 
 enum AuthStatus { 
-  initial,          // Belum ada action 
-  loading,          // Proses berlangsung 
-  authenticated,    // Login berhasil + token backend ada 
-  unauthenticated,  // Belum login / logout 
-  emailNotVerified, // Login tapi email belum dikonfirmasi 
-  error,            // Ada error 
+  initial,           
+  loading,          
+  authenticated,     
+  unauthenticated,  
+  emailNotVerified, 
+  error,             
 }
 
 class AuthProvider extends ChangeNotifier { 
   final FirebaseAuth _auth = FirebaseAuth.instance; 
- final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
-);
+  final GoogleSignIn _googleSignIn = GoogleSignIn(); 
  
-  // ─── State ─────────────────────────────────────────────── 
+  
   AuthStatus _status = AuthStatus.initial; 
   User?     _firebaseUser; 
-  String?   _backendToken;   // Token dari backend (bukan Firebase token) 
+  String?   _backendToken;    
   String?   _errorMessage; 
-  String? _tempEmail;
-  String? _tempPassword;
+  String?   _tempPassword;
+  String?   _tempEmail;
  
-  // ─── Getters ───────────────────────────────────────────── 
+  
   AuthStatus get status       => _status; 
   User?      get firebaseUser  => _firebaseUser; 
   String?    get backendToken  => _backendToken; 
   String?    get errorMessage  => _errorMessage; 
   bool       get isLoading     => _status == AuthStatus.loading;  
  
-// ─── Register dengan Email & Password ──────────────────── 
  
 Future<bool> register({name, email, password}) async { 
-  _setLoading(); // status = loading, notifyListeners() 
+  _setLoading(); 
   
-  // STEP 1: Buat akun di Firebase 
+ 
   final credential = await _auth.createUserWithEmailAndPassword( 
     email: email, 
     password: password, 
@@ -48,7 +46,6 @@ Future<bool> register({name, email, password}) async {
   _firebaseUser = credential.user; 
   
   await _firebaseUser?.updateDisplayName(name); 
-  
   await _firebaseUser?.sendEmailVerification(); 
   _tempEmail = email; 
   _tempPassword = password; 
@@ -60,17 +57,14 @@ Future<bool> register({name, email, password}) async {
 Future<bool> loginAfterEmailVerification() async { 
   _setLoading(); 
   
-  // STEP 1: Reload status user dari server Firebase 
   await _firebaseUser?.reload(); 
   _firebaseUser = _auth.currentUser; 
   
   if (!(_firebaseUser?.emailVerified ?? false)) { 
-    // Belum klik link → kembali ke halaman verify 
     _status = AuthStatus.emailNotVerified; 
     return false; 
   } 
   
-  // STEP 2: Re-login untuk dapat fresh session & token 
   final credential = await _auth.signInWithEmailAndPassword( 
     email: _tempEmail!, 
     password: _tempPassword!, 
@@ -79,7 +73,6 @@ Future<bool> loginAfterEmailVerification() async {
   _tempEmail = null;   // Hapus credentials dari memory 
   _tempPassword = null; 
   
-  // STEP 3: Kirim Firebase token ke backend → dapat JWT 
   return await _verifyTokenToBackend(); 
 } 
 
@@ -93,11 +86,10 @@ Future<bool> _verifyTokenToBackend() async {
     data: {'firebase_token': firebaseToken}, 
   ); 
   
-  // Backend return JWT milik sistem kita 
+   
   final data = response.data['data'] as Map<String, dynamic>; 
   final backendToken = data['access_token'] as String; 
   
-  // Simpan aman di device (encrypted) 
   await SecureStorageService.saveToken(backendToken); 
   
   _status = AuthStatus.authenticated; 
@@ -105,7 +97,7 @@ Future<bool> _verifyTokenToBackend() async {
   return true; 
 }
 
-// ─── Login dengan Email & Password ─────────────────────── 
+
   Future<bool> loginWithEmail({ 
     required String email, 
     required String password, 
@@ -118,7 +110,7 @@ Future<bool> _verifyTokenToBackend() async {
       ); 
       _firebaseUser = credential.user; 
  
-      // Cek apakah email sudah diverifikasi 
+      
       if (!(_firebaseUser?.emailVerified ?? false)) { 
         _status = AuthStatus.emailNotVerified; 
         notifyListeners(); 
