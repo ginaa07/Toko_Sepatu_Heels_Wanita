@@ -76,3 +76,24 @@ class _DashboardPageState extends State<DashboardPage> {
               ], 
             ), 
           ), 
+          ProductStatus.loaded => RefreshIndicator( 
+            onRefresh: () => product.fetchProducts(), 
+            child: GridView.builder( 
+              padding: const EdgeInsets.all(16), 
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount( 
+                crossAxisCount: 2, 
+                childAspectRatio: 0.75, 
+                crossAxisSpacing: 12, 
+                mainAxisSpacing: 12, 
+              ), 
+              itemCount: product.products.length, 
+              itemBuilder: (context, i) { 
+                final p = product.products[i]; 
+                return Card( 
+                  elevation: 2, 
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), 
+                  child: Column( 
+                    crossAxisAlignment: CrossAxisAlignment.start, 
+                    children: [ 
+                      ClipRRect( 
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
