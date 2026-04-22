@@ -44,6 +44,7 @@ class AppRouter {
     verifyEmail: (_) => const VerifyEmailPage(), 
     dashboard:   (_) => const AuthGuard(child: DashboardPage()), 
   }; 
+}
 
    
 class AuthGuard extends StatelessWidget { 
@@ -112,6 +113,6 @@ class _SplashPageState extends State<SplashPage> {
     body: Center(child: CircularProgressIndicator()), 
   ); 
 }
-}
+
 
 
