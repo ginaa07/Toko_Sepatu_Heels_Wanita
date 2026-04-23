@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toko_sepatu_heels_wanita/features/carts/domain/repositories/product.dart';
+import 'package:toko_sepatu_heels_wanita/features/carts/domain/repositories/cart_repository.dart';
 
 class CartProvider extends ChangeNotifier {
   final CartRepository _repository;

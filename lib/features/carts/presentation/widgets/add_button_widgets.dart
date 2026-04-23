@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toko_sepatu_heels_wanita/features/carts/domain/repositories/product.dart';
+import 'package:toko_sepatu_heels_wanita/features/carts/domain/repositories/cart_repository.dart';
 import 'package:toko_sepatu_heels_wanita/features/carts/presentation/providers/cart_provider.dart';
 
 class AddButtonWidget extends StatelessWidget {
