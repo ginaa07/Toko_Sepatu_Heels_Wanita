@@ -8,6 +8,7 @@ import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/providers/auth_provider.dart';
 import 'package:toko_sepatu_heels_wanita/features/carts/presentation/pages/cart_page.dart';
 import 'package:toko_sepatu_heels_wanita/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:toko_sepatu_heels_wanita/features/dashboard/presentation/pages/splash_page.dart';
 import 'package:toko_sepatu_heels_wanita/features/dashboard/presentation/providers/product_provider.dart';
 
 class AppRouter { 
@@ -72,13 +73,3 @@ class AuthGuard extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-// Penggunaan di routes:
-// dashboard: (_) => const AuthGuard(child: DashboardPage())
-//            ↑ DashboardPage HANYA muncul jika status = authenticated
