@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toko_sepatu_heels_wanita/features/carts/domain/repositories/cart_repository.dart';
 import 'package:toko_sepatu_heels_wanita/features/carts/presentation/providers/cart_provider.dart';
+import 'package:toko_sepatu_heels_wanita/features/dashboard/data/models/product_model.dart';
 
 class AddButtonWidget extends StatelessWidget {
-  final Product product;
+  final ProductModel product;
   const AddButtonWidget({required this.product, super.key});
 
   @override
