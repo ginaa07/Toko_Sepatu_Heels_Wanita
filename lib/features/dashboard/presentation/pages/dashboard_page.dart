@@ -113,7 +113,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       borderRadius: const BorderRadius.vertical(
                         top: Radius.circular(12),
                       ),
-                      child: Image.network(
+                      child: Image.asset(
                         p.imageUrl,
                         height: 120,
                         width: double.infinity,
