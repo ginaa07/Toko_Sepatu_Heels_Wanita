@@ -4,6 +4,8 @@ import 'package:toko_sepatu_heels_wanita/core/routes/app_router.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/providers/auth_provider.dart';
 import 'package:toko_sepatu_heels_wanita/features/dashboard/presentation/providers/product_provider.dart';
 
+import '../../../carts/presentation/widgets/add_button_widgets.dart';
+
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
   @override
@@ -160,6 +162,7 @@ class _DashboardPageState extends State<DashboardPage> {
                               ),
                             ),
                           ),
+                            AddButtonWidget(product: p)
                         ],
                       ),
                     ),
