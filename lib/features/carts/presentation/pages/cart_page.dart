@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toko_sepatu_heels_wanita/features/carts/presentation/providers/cart_provider.dart';
@@ -9,6 +8,9 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cart = context.watch<CartProvider>();
+
+    double total = cart.items.fold(0, (sum, item) => sum + item.price);
+
     return Scaffold(
       appBar: AppBar(title: const Text('Keranjang Belanja')),
       body: Column(
@@ -25,7 +27,6 @@ class CartPage extends StatelessWidget {
           ),
           const Divider(),
 
-          /// TOTAL HARGA
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             child: Row(
@@ -33,11 +34,20 @@ class CartPage extends StatelessWidget {
               children: [
                 const Text(
                   'Total:',
-                  style: TextStyle(
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+
+                Text(
+                  'Rp ${total.toStringAsFixed(0)}',
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
+                    color: Colors.blue,
                   ),
                 ),
+              ],
+            ),
+          ),
           const Divider(),
           Padding(
             padding: const EdgeInsets.all(20),
