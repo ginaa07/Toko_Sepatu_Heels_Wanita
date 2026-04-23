@@ -9,7 +9,10 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var cart = context.watch<CartProvider>();
 
-    double total = cart.items.fold(0, (sum, item) => sum + item.price);
+double total = cart.items.fold(
+      0.0,
+      (sum, item) => sum + (item.price as num).toDouble(),
+    );
 
     return Scaffold(
       appBar: AppBar(title: const Text('Keranjang Belanja')),
@@ -19,71 +22,120 @@ class CartPage extends StatelessWidget {
             child: ListView.builder(
               itemCount: cart.items.length,
               itemBuilder: (context, index) => ListTile(
-                leading: const Icon(Icons.fastfood),
+                leading: const Icon(Icons.shopping_bag),
                 title: Text(cart.items[index].name),
                 subtitle: Text('Rp ${cart.items[index].price}'),
               ),
             ),
           ),
           const Divider(),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Total:',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-
-                Text(
-                  'Rp ${total.toStringAsFixed(0)}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
-                  ),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 10,
+                  offset: const Offset(0, -2),
                 ),
               ],
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(20),
+              ),
             ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Row(
+            child: Column(
               children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () => cart.removeAll(),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [Color(0xFF1565C0), Color(0xFF42A5F5)],
                     ),
-                    child: const Text(
-                      'Hapus',
-                      style: TextStyle(color: Colors.white),
-                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Row(
+                    mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Total Belanja',
+                        style: TextStyle(
+                          color: Colors.white70,
+                        ),
+                      ),
+                      Text(
+                        'Rp ${total.toStringAsFixed(0)}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
 
-                const SizedBox(width: 12),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Fitur pembayaran belum tersedia'),
+          const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () => cart.removeAll(),
+                        style: OutlinedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 14,
+                          ),
+                          side: const BorderSide(color: Colors.red),
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(12),
+                          ),
                         ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink,
+                        child: const Text(
+                          'Hapus',
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
                     ),
-                    child: const Text(
-                      'Bayar Sekarang',
-                      style: TextStyle(color: Colors.white),
+                const SizedBox(width: 12),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: cart.items.isEmpty
+                            ? null
+                            : () {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(
+                                  const SnackBar(
+                                    content:
+                                        Text('Checkout berhasil'),
+                                  ),
+                                );
+                              },
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 14,
+                          ),
+                          backgroundColor: Colors.pink,
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(12),
+                          ),
+                        ),
+                        child: const Text(
+                          'Bayar Sekarang',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),
@@ -93,4 +145,3 @@ class CartPage extends StatelessWidget {
     );
   }
 }
-                
