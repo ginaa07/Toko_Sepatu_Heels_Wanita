@@ -24,6 +24,21 @@ class CartPage extends StatelessWidget {
             ),
           ),
           const Divider(),
+
+          /// TOTAL HARGA
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Total:',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+          const Divider(),
           Padding(
             padding: const EdgeInsets.all(20),
             child: ElevatedButton(
