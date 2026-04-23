@@ -32,7 +32,7 @@ class _DashboardPageState extends State<DashboardPage> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Dashboard', style: TextStyle(fontSize: 18)),
+            const Text('Toko Sepatu Heels Wanita', style: TextStyle(fontSize: 18)),
             Text(
               'Halo, ${auth.firebaseUser?.displayName ?? 'User'}!',
               style: const TextStyle(
