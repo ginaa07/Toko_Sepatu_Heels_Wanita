@@ -65,6 +65,17 @@ class CartPage extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                const SizedBox(width: 12),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Fitur pembayaran belum tersedia'),
+                        ),
+                      );
+                    },
                 const Divider(),
                 Padding(
                   padding: const EdgeInsets.all(20),
