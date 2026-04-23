@@ -48,16 +48,38 @@ class CartPage extends StatelessWidget {
               ],
             ),
           ),
-          const Divider(),
+
           Padding(
             padding: const EdgeInsets.all(20),
-            child: ElevatedButton(
-              onPressed: () => cart.removeAll(),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              child: const Text(
-                'Hapus Keranjang',
-                style: TextStyle(color: Colors.white),
-              ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () => cart.removeAll(),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                    ),
+                    child: const Text(
+                      'Hapus',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                const Divider(),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: ElevatedButton(
+                    onPressed: () => cart.removeAll(),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                    ),
+                    child: const Text(
+                      'Hapus Keranjang',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
