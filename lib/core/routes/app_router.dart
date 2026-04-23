@@ -6,6 +6,7 @@ import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/pages/register_page.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/pages/verify_email_page.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/providers/auth_provider.dart';
+import 'package:toko_sepatu_heels_wanita/features/carts/presentation/pages/cart_page.dart';
 import 'package:toko_sepatu_heels_wanita/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:toko_sepatu_heels_wanita/features/dashboard/presentation/providers/product_provider.dart';
 
@@ -15,6 +16,7 @@ class AppRouter {
   static const String register    = '/register'; 
   static const String verifyEmail = '/verify-email'; 
   static const String dashboard   = '/dashboard'; 
+  static const String cart        = '/cart';
  
   static Map<String, WidgetBuilder> get routes => { 
     splash:      (_) => const SplashPage(), 
@@ -22,6 +24,7 @@ class AppRouter {
     register:    (_) => const RegisterPage(), 
     verifyEmail: (_) => const VerifyEmailPage(), 
     dashboard:   (_) => const AuthGuard(child: DashboardPage()), 
+    cart:        (_) => const CartPage(),
   }; 
 }
 
@@ -55,6 +58,7 @@ class AuthGuard extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ProductProvider()),
+
       ],
       child: MaterialApp(
         title:                  'My App',

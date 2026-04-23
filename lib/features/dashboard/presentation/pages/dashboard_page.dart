@@ -51,6 +51,12 @@ class _DashboardPageState extends State<DashboardPage> {
               Navigator.pushReplacementNamed(context, AppRouter.login);
             },
           ),
+          IconButton(
+            icon: const Icon( Icons.shopping_cart),
+            onPressed: () {
+              Navigator.pushNamed(context, AppRouter.cart);
+            },
+          ),
         ],
       ),
 
