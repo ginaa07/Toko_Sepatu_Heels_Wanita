@@ -76,16 +76,11 @@ class CartPage extends StatelessWidget {
                         ),
                       );
                     },
-                const Divider(),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: ElevatedButton(
-                    onPressed: () => cart.removeAll(),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: Colors.pink,
                     ),
                     child: const Text(
-                      'Hapus Keranjang',
+                      'Bayar Sekarang',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -98,3 +93,4 @@ class CartPage extends StatelessWidget {
     );
   }
 }
+                
