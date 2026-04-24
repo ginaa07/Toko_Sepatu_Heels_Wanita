@@ -24,30 +24,31 @@ class AddButtonWidget extends StatelessWidget {
                 cart.addItem(product);
               },
               child: const Text(
-                'TAMBAH',
+                'Tambah',
                 style: TextStyle(
                   color: Colors.pink,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             )
-
-          : Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.remove, size: 18),
-                  onPressed: () => cart.decreaseItem(product.id),
-                ),
-                Text(
-                  qty.toString(),
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.add, size: 18),
-                  onPressed: () => cart.addItem(product),
-                ),
-              ],
+          : Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.remove, size: 18),
+                    onPressed: () => cart.decreaseItem(product.id),
+                  ),
+                  Text(
+                    qty.toString(),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.add, size: 18),
+                    onPressed: () => cart.addItem(product),
+                  ),
+                ],
+              ),
             ),
     );
   }
