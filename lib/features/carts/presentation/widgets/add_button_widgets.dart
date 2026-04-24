@@ -9,17 +9,46 @@ class AddButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isInCart = context.select<CartProvider, bool>(
-      (provider) => provider.isInCart(product.id),
-    );
+    final cart = context.watch<CartProvider>();
+    final qty = cart.getQuantity(product.id);
 
-    return TextButton(
-      onPressed: isInCart
-          ? null
-          : () => context.read<CartProvider>().addItem(product),
-      child: isInCart
-          ? const Icon(Icons.check, color: Colors.green)
-          : const Text('TAMBAH'),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      decoration: BoxDecoration(
+        color: Colors.pink.shade50,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: qty == 0
+          ? TextButton(
+              onPressed: () {
+                cart.addItem(product);
+              },
+              child: const Text(
+                'TAMBAH',
+                style: TextStyle(
+                  color: Colors.pink,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
+
+          : Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.remove, size: 18),
+                  onPressed: () => cart.decreaseItem(product.id),
+                ),
+                Text(
+                  qty.toString(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.add, size: 18),
+                  onPressed: () => cart.addItem(product),
+                ),
+              ],
+            ),
     );
   }
 }

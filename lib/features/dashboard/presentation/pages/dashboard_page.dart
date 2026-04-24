@@ -171,7 +171,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         ],
                       ),
                     ),
-                            AddButtonWidget(product: p)
+                    AddButtonWidget(product: p)
                   ],
                 ),
               );
