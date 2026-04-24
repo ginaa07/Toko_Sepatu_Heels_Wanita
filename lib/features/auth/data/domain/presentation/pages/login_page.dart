@@ -125,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 32), 
                   CustomTextField( 
                     label: 'Email Address', 
-                    hint: 'Masukkan email', 
+                    hint: 'Masukkan Email', 
                     controller: _emailCtrl, 
                     keyboardType: TextInputType.emailAddress, 
                     prefixIcon: const Icon(Icons.email_outlined), 
@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                    const SizedBox(height: 16), 
                   CustomTextField( 
                     label: 'Password', 
-                    hint: 'Masukkan password', 
+                    hint: 'Masukkan Password', 
                     controller: _passCtrl, 
                     obscureText: !_showPass, 
                     prefixIcon: const Icon(Icons.lock_outline), 
