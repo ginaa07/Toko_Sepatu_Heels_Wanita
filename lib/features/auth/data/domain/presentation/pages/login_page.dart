@@ -119,13 +119,13 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 32), 
                   const AuthHeader( 
                     icon: Icons.store_mall_directory, 
-                    title: 'Welcome to Chérie Heels',
+                    title: 'Welcome to Safarina Heels',
                     subtitle: 'Sign in to continue your stylish journey',
                   ), 
                   const SizedBox(height: 32), 
                   CustomTextField( 
-                    label: 'Email', 
-                    hint: 'contoh@email.com', 
+                    label: 'Email Address', 
+                    hint: 'yourstyle@safaheels.com', 
                     controller: _emailCtrl, 
                     keyboardType: TextInputType.emailAddress, 
                     prefixIcon: const Icon(Icons.email_outlined), 
