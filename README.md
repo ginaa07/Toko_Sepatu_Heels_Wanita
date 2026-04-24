@@ -7,8 +7,8 @@
 
 ---
 
-## Aplikasi Catalog
-- **Nama** : Tokosepatu heels wanita
+## Tampilan UI Aplikasi Toko sepatu heels wanita
+- **Nama** : Toko sepatu heels wanita
 
 ## 📸 Screenshots
 <p align="center">
