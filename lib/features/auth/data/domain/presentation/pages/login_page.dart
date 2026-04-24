@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
               key: _formKey, 
               child: Column( 
                 children: [ 
-                  const SizedBox(height: 32), 
+                  const SizedBox(height: 28), 
                   const AuthHeader( 
                     icon: Icons.store_mall_directory, 
                     title: 'Welcome to Safarina Heels',
