@@ -119,8 +119,8 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 32), 
                   const AuthHeader( 
                     icon: Icons.store_mall_directory, 
-                    title: 'Selamat Datang', 
-                    subtitle: 'Masuk ke akun Anda untuk melanjutkan', 
+                    title: 'Welcome to Chérie Heels',
+                    subtitle: 'Sign in to continue your stylish journey',
                   ), 
                   const SizedBox(height: 32), 
                   CustomTextField( 
