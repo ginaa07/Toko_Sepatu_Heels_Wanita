@@ -5,14 +5,27 @@ import 'package:toko_sepatu_heels_wanita/features/dashboard/data/models/product_
 class CartProvider extends ChangeNotifier {
   final CartRepository _repository;
 
-  // Dependency Injection melalui constructor
-  CartProvider({required CartRepository repository}) : _repository = repository;
+  CartProvider({required CartRepository repository})
+      : _repository = repository;
 
   List<ProductModel> get items => _repository.getCartItems();
 
   void addItem(ProductModel product) {
     _repository.addItem(product);
     notifyListeners();
+  }
+
+  void decreaseItem(int productId) {
+    _repository.decreaseItem(productId);
+    notifyListeners();
+  }
+
+  int getQuantity(int productId) {
+    return _repository.getQuantity(productId);
+  }
+
+  double get totalPrice {
+    return _repository.getTotalPrice();
   }
 
   void removeAll() {
