@@ -9,47 +9,52 @@ class AddButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = context.watch<CartProvider>();
-    final qty = cart.getQuantity(product.id);
+    final isInCart = context.select<CartProvider, bool>(
+      (provider) => provider.isInCart(product.id),
+    );
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      decoration: BoxDecoration(
-        color: Colors.pink.shade50,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: qty == 0
-          ? TextButton(
-              onPressed: () {
-                cart.addItem(product);
-              },
-              child: const Text(
-                'Tambah',
-                style: TextStyle(
-                  color: Colors.pink,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
-          : Center(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
+    return Center(
+      child: Container(
+        width: 140, 
+        height: 45,
+        decoration: BoxDecoration(
+          color: Colors.pink.shade100,
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: isInCart
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center, // 👈 ini penting
                 children: [
                   IconButton(
                     icon: const Icon(Icons.remove, size: 18),
-                    onPressed: () => cart.decreaseItem(product.id),
+                    onPressed: () =>
+                        context.read<CartProvider>().decreaseItem(product.id),
                   ),
                   Text(
-                    qty.toString(),
+                    context
+                        .watch<CartProvider>()
+                        .getQuantity(product.id)
+                        .toString(),
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   IconButton(
                     icon: const Icon(Icons.add, size: 18),
-                    onPressed: () => cart.addItem(product),
+                    onPressed: () =>
+                        context.read<CartProvider>().addItem(product),
                   ),
                 ],
+              )
+            : TextButton(
+                onPressed: () => context.read<CartProvider>().addItem(product),
+                child: const Text(
+                  'Tambah',
+                  style: TextStyle(
+                    color: Colors.pink,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-            ),
+      ),
     );
   }
 }
