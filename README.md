@@ -3,7 +3,7 @@
 ## 👤 Profil Pengembang
 - **Nama**      : Regina Safarina
 - **Kelas**     : TI SE 2 23 P2
-- **Prodi**-    : Teknik Informatika | Software Engineering
+- **Prodi**    : Teknik Informatika | Software Engineering
 - **NIM**       : 1123150124
 
 ---
@@ -34,4 +34,4 @@
   <img src="assets/images/getproduct_tokoheels.jpg" width="300" alt="Backend Golang">
 
 ## Link Youtube
-  [![Aplikasi Toko Sepatu heels wanita](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+  [![Aplikasi Toko Sepatu heels wanita](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID) ini video lg tahap edit
