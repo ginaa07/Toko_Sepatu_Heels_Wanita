@@ -13,55 +13,43 @@ class AddButtonWidget extends StatelessWidget {
     final qty = cart.getQuantity(product.id);
 
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
         color: Colors.pink.shade50,
         borderRadius: BorderRadius.circular(20),
       ),
       child: qty == 0
-          ? GestureDetector(
-              onTap: () => cart.addItem(product),
-              child: const Center(
-                child: Text(
-                  'Tambah',
-                  style: TextStyle(
-                    color: Colors.pink,
-                    fontWeight: FontWeight.bold,
-                  ),
+          ? TextButton(
+              onPressed: () {
+                cart.addItem(product);
+              },
+              child: const Text(
+                'Tambah',
+                style: TextStyle(
+                  color: Colors.pink,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             )
-          : Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.remove, size: 18),
-                  onPressed: () => cart.decreaseItem(product.id),
-                  constraints: const BoxConstraints(),
-                  padding: EdgeInsets.zero,
-                ),
-
-                const SizedBox(width: 8),
-
-                Text(
-                  qty.toString(),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
+          : Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.remove, size: 18),
+                    onPressed: () => cart.decreaseItem(product.id),
                   ),
-                ),
-
-                const SizedBox(width: 8),
-
-                IconButton(
-                  icon: const Icon(Icons.add, size: 18),
-                  onPressed: () => cart.addItem(product),
-                  constraints: const BoxConstraints(),
-                  padding: EdgeInsets.zero,
-                ),
-              ],
-           ),
-        );
-     }
+                  Text(
+                    qty.toString(),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.add, size: 18),
+                    onPressed: () => cart.addItem(product),
+                  ),
+                ],
+              ),
+            ),
+    );
   }
+}
