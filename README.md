@@ -1,9 +1,10 @@
 # toko_sepatu_heels_wanita
 
 ## 👤 Profil Pengembang
-- **Nama** : Regina Safarina
-- **Kelas** : TI SE 2 23 P2
-- **Prodi** : Teknik Informatika | Software Engineering
+- **Nama**      : Regina Safarina
+- **Kelas**     : TI SE 2 23 P2
+- **Prodi**-    : Teknik Informatika | Software Engineering
+- **NIM**       : 1123150124
 
 ---
 
