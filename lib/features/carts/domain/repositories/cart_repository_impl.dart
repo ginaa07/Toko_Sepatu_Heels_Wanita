@@ -2,59 +2,43 @@ import 'package:toko_sepatu_heels_wanita/features/carts/domain/repositories/cart
 import 'package:toko_sepatu_heels_wanita/features/dashboard/data/models/product_model.dart';
 
 class CartRepositoryImpl implements CartRepository {
-  final Map<int, int> _items = {}; 
-  final Map<int, ProductModel> _products = {};
+  final Map<ProductModel, int> _items = {};
 
   @override
-  List<ProductModel> getCartItems() {
-    return _products.values.toList();
+  List<ProductModel> getCartItems() => _items.keys.toList();
+
+  int getQuantity(int productId) {
+    return _items.entries
+        .firstWhere((e) => e.key.id == productId, orElse: () => MapEntry(ProductModel.empty(), 0))
+        .value;
   }
 
   @override
   void addItem(ProductModel product) {
-    _products[product.id] = product;
-    _items[product.id] = (_items[product.id] ?? 0) + 1;
+    if (_items.containsKey(product)) {
+      _items[product] = _items[product]! + 1;
+    } else {
+      _items[product] = 1;
+    }
   }
 
-  @override
   void decreaseItem(int productId) {
-    if (_items.containsKey(productId)) {
-      _items[productId] = _items[productId]! - 1;
+    final entry = _items.entries.firstWhere(
+      (e) => e.key.id == productId,
+      orElse: () => throw Exception("Item tidak ditemukan"),
+    );
 
-      if (_items[productId]! <= 0) {
-        _items.remove(productId);
-        _products.remove(productId);
-      }
+    if (entry.value > 1) {
+      _items[entry.key] = entry.value - 1;
+    } else {
+      _items.remove(entry.key);
     }
   }
 
   @override
-  int getQuantity(int productId) {
-    return _items[productId] ?? 0;
-  }
+  void removeAllItems() => _items.clear();
 
   @override
-  bool isItemInCart(int productId) {
-    return _items.containsKey(productId);
-  }
-
-  @override
-  void removeAllItems() {
-    _items.clear();
-    _products.clear();
-  }
-
-  @override
-  double getTotalPrice() {
-    double total = 0;
-
-    _items.forEach((id, qty) {
-      final product = _products[id];
-      if (product != null) {
-        total += product.price * qty;
-      }
-    });
-
-    return total;
-  }
+  bool isItemInCart(int productId) =>
+      _items.keys.any((p) => p.id == productId);
 }
