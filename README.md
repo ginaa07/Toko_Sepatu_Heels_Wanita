@@ -34,4 +34,4 @@
   <img src="assets/images/getproduct_tokoheels.jpg" width="300" alt="Backend Golang">
 
 ## Link Youtube
-  [![Aplikasi Toko Sepatu heels wanita](https://youtu.be/YalLW2QtFPw)(pt 1)
+ https://youtu.be/YalLW2QtFPw
