@@ -35,3 +35,5 @@
 
 ## Link Youtube
  https://youtu.be/YalLW2QtFPw
+ https://youtu.be/w-9mycdDZNc (pt 2)
+ 
