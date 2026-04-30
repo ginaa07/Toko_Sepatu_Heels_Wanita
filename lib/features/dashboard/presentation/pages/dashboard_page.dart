@@ -163,6 +163,7 @@ class _DashboardPageState extends State<DashboardPage> {
               final p = product.products[i];
               return Card(
                 elevation: 2,
+                color: Theme.of(context).colorScheme.surface,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -195,9 +196,10 @@ class _DashboardPageState extends State<DashboardPage> {
                         children: [
                           Text(
                             p.name,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
+                              color: Theme.of(context).colorScheme.onSurface,
                             ),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
