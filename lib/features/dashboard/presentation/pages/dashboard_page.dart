@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toko_sepatu_heels_wanita/core/providers/theme_provider.dart';
 import 'package:toko_sepatu_heels_wanita/core/routes/app_router.dart';
 import 'package:toko_sepatu_heels_wanita/features/auth/data/domain/presentation/providers/auth_provider.dart';
 import 'package:toko_sepatu_heels_wanita/features/dashboard/presentation/providers/product_provider.dart';
@@ -13,6 +14,43 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  void _showAccountDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        final themeProvider = context.watch<ThemeProvider>();
+        final isDark = themeProvider.isDark;
+
+        return AlertDialog(
+          title: const Text('Pengaturan'),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    isDark ? Icons.dark_mode : Icons.light_mode,
+                    size: 20,
+                    color: isDark ? Colors.amber : Colors.grey,
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    isDark ? 'Mode Gelap' : 'Mode Terang',
+                    style: const TextStyle(fontSize: 14),
+                  ),
+                ],
+              ),
+              Switch(
+                value: isDark,
+                onChanged: (_) => context.read<ThemeProvider>().toggle(),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -43,19 +81,41 @@ class _DashboardPageState extends State<DashboardPage> {
           ],
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await auth.logout();
-              if (!mounted) return;
-              Navigator.pushReplacementNamed(context, AppRouter.login);
-            },
-          ),
-          IconButton(
-            icon: const Icon( Icons.shopping_cart),
-            onPressed: () {
-              Navigator.pushNamed(context, AppRouter.cart);
-            },
+          Row(
+            children: [
+              const Icon(Icons.light_mode, size: 18),
+
+              Switch(
+                value: context.watch<ThemeProvider>().isDark,
+                onChanged: (_) {
+                  context.read<ThemeProvider>().toggle();
+                },
+              ),
+
+              const Icon(Icons.dark_mode, size: 18),
+
+              IconButton(
+                icon: const Icon(Icons.shopping_cart),
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRouter.cart);
+                },
+              ),
+
+              IconButton(
+                icon: const Icon(Icons.logout),
+                onPressed: () async {
+                  await auth.logout();
+                  if (!mounted) return;
+                  Navigator.pushReplacementNamed(context, AppRouter.login);
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.person),
+                onPressed: () {
+                  _showAccountDialog(context);
+                },
+              ),
+            ],
           ),
         ],
       ),
@@ -171,7 +231,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         ],
                       ),
                     ),
-                    AddButtonWidget(product: p)
+                    AddButtonWidget(product: p),
                   ],
                 ),
               );
