@@ -196,7 +196,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         children: [
                           Text(
                             p.name,
-                            style: TextStyle(
+                            style: TextStyle( //wana teks
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
                               color: Theme.of(context).colorScheme.onSurface,
