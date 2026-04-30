@@ -8,22 +8,19 @@ import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ProductProvider()),
-        ChangeNotifierProvider(create: (_) => CartProvider(repository: CartRepositoryImpl())),
+        ChangeNotifierProvider(
+          create: (_) => CartProvider(repository: CartRepositoryImpl()),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -35,9 +32,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final themeProvider = context.watch<ThemeProvider>(); 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Toko Sepatu Heels Wanita',
+
+      theme: AppTheme.light, 
+      darkTheme: AppTheme.dark, 
+      themeMode: ThemeMode.system, 
+
       initialRoute: AppRouter.splash,
       routes: AppRouter.routes,
     );
