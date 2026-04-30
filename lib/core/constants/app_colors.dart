@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 class AppColors {
   // Brand (dipakai di kedua mode)
   static const Color primary = Color(0xFF1565C0);
+  static const Color primaryDarkMode = Color(0xFF42A5F5);
   static const Color primaryLight = Color(0xFF1E88E5);
   static const Color primaryDark = Color(0xFF0D47A1);
-  static const Color accent = Color(0xFF42A5F5);
+  
 
   //Light mode
   static const Color surface = Colors.white;
