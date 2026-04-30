@@ -222,9 +222,9 @@ class _DashboardPageState extends State<DashboardPage> {
                             ),
                             child: Text(
                               p.category,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 11,
-                                color: Color(0xFF1565C0),
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
                           ),
