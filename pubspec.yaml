@@ -34,16 +34,22 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  firebase_core: ^4.6.0
+  firebase_auth: ^6.3.0
+  firebase_messaging: ^16.1.3
+  flutter_local_notifications: ^18.0.0
   provider: ^6.1.5+1
-  firebase_core: ^4.7.0
-  firebase_auth: ^6.4.0
-  google_sign_in: ^6.2.1
-  dio: ^5.9.2
+  google_sign_in: ^6.2.2
   flutter_secure_storage: ^10.0.0
-  equatable: ^2.0.8
+  dio: ^5.9.2
   email_validator: ^3.0.0
-  flutter_svg: ^2.2.4
-  flutter_launcher_icons: ^0.14.4
+  equatable: ^2.0.5
+  url_launcher: ^6.3.1
+  app_links: ^6.3.2
+
+  # Biometric app lock — library lokal
+  flutter_biometric_kit:
+    path: ../flutter_biometric_kit
 
 dev_dependencies:
 flutter_test:

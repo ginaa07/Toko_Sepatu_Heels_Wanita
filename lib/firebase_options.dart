@@ -66,4 +66,5 @@ class DefaultFirebaseOptions {
     projectId: 'backendgolang',
     storageBucket: 'backendgolang.firebasestorage.app',
   );
+
 }
