@@ -1020,7 +1020,7 @@ class _AccountDialog extends StatelessWidget {
           // Avatar
           CircleAvatar(
             radius: 30,
-            backgroundColor: const Color(0xFF1565C0),
+            backgroundColor: const Color(0xFF6366F1),
             child: Text(
               (auth.firebaseUser?.displayName ?? 'U')[0].toUpperCase(),
               style: const TextStyle(fontSize: 24, color: Colors.white),
