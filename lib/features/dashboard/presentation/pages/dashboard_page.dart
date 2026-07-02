@@ -624,7 +624,7 @@ class _ProductCardState extends State<_ProductCard> {
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF1565C0),
+                        color: Color(0xFF6366F1),
                       ),
                     ),
                   ],
